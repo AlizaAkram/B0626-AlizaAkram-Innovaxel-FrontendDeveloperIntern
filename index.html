@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+ 
+    <div class="app-wrapper">
+ 
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">₨</div>
+                <span>ExpenseIQ</span>
+            </div>
+ 
+            <nav class="sidebar-nav">
+                <a href="#add-expense" class="nav-item active" data-section="form">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                    Add Expense
+                </a>
+                <a href="#expenses" class="nav-item" data-section="list">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                    All Expenses
+                </a>
+                <a href="#summary" class="nav-item" data-section="summary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    Summary
+                </a>
+            </nav>
+ 
+            <div class="sidebar-total">
+                <p class="sidebar-total-label">Total Spent</p>
+                <p class="sidebar-total-amount" id="sidebarTotal">Rs. 0</p>
+            </div>
+        </aside>
+ 
+        <main class="main-content">
+ 
+            <section class="page active" id="page-form">
+ 
+                <div class="page-header">
+                    <h1>Add Expense</h1>
+                    <p>Record a new transaction</p>
+                </div>
+ 
+                <div class="card form-card">
+                    <form id="expenseForm" novalidate>
+ 
+                        <div class="form-grid">
+ 
+                            <div class="form-group">
+                                <label for="title">Title <span class="required">*</span></label>
+                                <input type="text" id="title" placeholder="e.g. Dinner with friends" autocomplete="off">
+                                <span class="field-error" id="titleError"></span>
+                            </div>
+ 
+                            <div class="form-group">
+                                <label for="amount">Amount (Rs.) <span class="required">*</span></label>
+                                <input type="number" id="amount" placeholder="e.g. 2200" min="1" step="0.01" autocomplete="off">
+                                <span class="field-error" id="amountError"></span>
+                            </div>
+ 
+                            <div class="form-group">
+                                <label for="category">Category <span class="required">*</span></label>
+                                <select id="category">
+                                    <option value="">Select a category</option>
+                                    <option value="Food"> Food</option>
+                                    <option value="Transport"> Transport</option>
+                                    <option value="Shopping"> Shopping</option>
+                                    <option value="Utilities"> Utilities</option>
+                                    <option value="Health"> Health</option>
+                                    <option value="Education"> Education</option>
+                                    <option value="Entertainment"> Entertainment</option>
+                                    <option value="Other"> Other</option>
+                                </select>
+                                <span class="field-error" id="categoryError"></span>
+                            </div>
+ 
+                            <div class="form-group">
+                                <label for="date">Date <span class="required">*</span></label>
+                                <input type="date" id="date">
+                                <span class="field-error" id="dateError"></span>
+                            </div>
+ 
+                            <div class="form-group full-width">
+                                <label for="notes">Notes <span class="optional">(optional)</span></label>
+                                <textarea id="notes" rows="3" placeholder="Any additional notes..."></textarea>
+                            </div>
+ 
+                        </div>
+ 
+                        <div class="form-actions">
+                            <button type="button" id="cancelBtn" class="btn-secondary" style="display:none;">Cancel Edit</button>
+                            <button type="submit" id="submitBtn" class="btn-primary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                Add Expense
+                            </button>
+                        </div>
+ 
+                    </form>
+                </div>
+ 
+            </section>
+ 
+            <section class="page" id="page-list">
+ 
+                <div class="page-header">
+                    <h1>All Expenses</h1>
+                    <p>Manage and review your transactions</p>
+                </div>
+ 
+                <div class="card filter-card">
+                    <div class="filter-grid">
+ 
+                        <div class="filter-group">
+                            <label for="filterCategory">Category</label>
+                            <select id="filterCategory">
+                                <option value="">All Categories</option>
+                                <option value="Food">Food</option>
+                                <option value="Transport">Transport</option>
+                                <option value="Shopping">Shopping</option>
+                                <option value="Utilities">Utilities</option>
+                                <option value="Health">Health</option>
+                                <option value="Education">Education</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+ 
+                        <div class="filter-group">
+                            <label for="filterFrom">From Date</label>
+                            <input type="date" id="filterFrom">
+                        </div>
+ 
+                        <div class="filter-group">
+                            <label for="filterTo">To Date</label>
+                            <input type="date" id="filterTo">
+                        </div>
+ 
+                        <div class="filter-actions">
+                            <button id="applyFilterBtn" class="btn-primary btn-sm">Apply</button>
+                            <button id="clearFilterBtn" class="btn-ghost btn-sm">Clear</button>
+                        </div>
+ 
+                    </div>
+                </div>
+ 
+                <div class="card">
+                    <div class="table-toolbar">
+                        <span id="resultCount" class="result-count"></span>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Amount</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Notes</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expenseTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+ 
+            </section>
+ 
+            <section class="page" id="page-summary">
+ 
+                <div class="page-header">
+                    <h1>Summary</h1>
+                    <p>Visual breakdown of your spending</p>
+                </div>
+ 
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--green">₨</div>
+                        <div>
+                            <p class="stat-label">Total Spent</p>
+                            <p class="stat-value" id="statTotal">Rs. 0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--blue">#</div>
+                        <div>
+                            <p class="stat-label">Total Entries</p>
+                            <p class="stat-value" id="statCount">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--amber">⌀</div>
+                        <div>
+                            <p class="stat-label">Average per Entry</p>
+                            <p class="stat-value" id="statAvg">Rs. 0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--red">↑</div>
+                        <div>
+                            <p class="stat-label">Top Category</p>
+                            <p class="stat-value" id="statTop">—</p>
+                        </div>
+                    </div>
+                </div>
+ 
+                <div class="card chart-card">
+                    <h3>Spending by Category</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                    <div id="chartLegend" class="chart-legend"></div>
+                </div>
+ 
+            </section>
+ 
+        </main>
+ 
+    </div>
+ 
+    <div class="toast" id="toast"></div>
+ 
+    <script src="js/script.js"></script>
+</body>
+</html>
