@@ -1,6 +1,6 @@
 # Personal Expense Tracker
 
-**Submission by:** Your Full Name  
+**Submission by:** Aliza Akram 
 **Batch:** B0626  
 **Role:** Frontend Developer Intern  
 **Company:** Innovaxel
@@ -57,4 +57,3 @@ The app lets users add, edit, delete, and filter expenses, and view a visual sum
 
 ---
 
-## Project Structure
