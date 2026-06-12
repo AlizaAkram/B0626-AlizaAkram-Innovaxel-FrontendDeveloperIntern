@@ -30,7 +30,7 @@ The app lets users add, edit, delete, and filter expenses, and view a visual sum
 - Category-wise breakdown with color-coded badges
 - Inline input validation with error messages (no alert popups)
 - Data persists using localStorage (survives page refresh)
-- Responsive design — works on mobile and desktop
+- Responsive design (works on mobile and desktop)
 - Toast notifications for user feedback
 - Sidebar navigation with smooth page transitions
 
