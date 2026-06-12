@@ -1,6 +1,6 @@
 # Personal Expense Tracker
 
-**Submission by:** Aliza Akram 
+**Submission by:** Aliza Akram  
 **Batch:** B0626  
 **Role:** Frontend Developer Intern  
 **Company:** Innovaxel
