@@ -16,24 +16,23 @@
 ## About the Project
 
 A Single Page Application (SPA) for tracking personal expenses.  
-Built with plain HTML, CSS, and JavaScript — no frameworks or libraries except Chart.js for the chart.
+Built with plain HTML, CSS, and JavaScript (no frameworks or libraries except Chart.js for the chart)
 
-The app lets users add, edit, delete, and filter expenses, and view a visual summary of their spending — all without any backend or login required.
+The app lets users add, edit, delete, and filter expenses, and view a visual summary of their spending, all without any backend or login required.
 
 ---
 
 ## Features
 
-- ✅ Add, Edit, and Delete expenses
-- ✅ Filter expenses by category and date range
-- ✅ Visual spending summary with a doughnut chart
-- ✅ Category-wise breakdown with color-coded badges
-- ✅ Inline input validation with error messages (no alert popups)
-- ✅ Data persists using localStorage (survives page refresh)
-- ✅ Responsive design — works on mobile and desktop
-- ✅ Toast notifications for user feedback
-- ✅ XSS protection on all user inputs
-- ✅ Sidebar navigation with smooth page transitions
+- Add, Edit, and Delete expenses
+- Filter expenses by category and date range
+- Visual spending summary with a doughnut chart
+- Category-wise breakdown with color-coded badges
+- Inline input validation with error messages (no alert popups)
+- Data persists using localStorage (survives page refresh)
+- Responsive design — works on mobile and desktop
+- Toast notifications for user feedback
+- Sidebar navigation with smooth page transitions
 
 ---
 
