@@ -9,7 +9,7 @@
 
 ## 🔗 Live Demo
 
-👉 [Click here to view the live project](https://alizaakram.github.io/B0626---Aliza-Akram---Innovaxel---Frontend-Developer-Intern/)
+👉 [Click here to view the live project](https://alizaakram.github.io/B0626-AlizaAkram-Innovaxel-FrontendDeveloperIntern/)
 
 ---
 
